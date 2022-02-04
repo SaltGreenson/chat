@@ -15,6 +15,9 @@ type LogoutResponseType = {
     messages: Array<string>
     data: null
 }
+
+//
+
 export const authAPI = {
     me() {
         return instance.get<APIResponseType<MeResponseDataType>>(`auth/me`).then(res => res.data)
