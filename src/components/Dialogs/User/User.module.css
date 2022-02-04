@@ -1,0 +1,24 @@
+.name a{
+    display: block;
+    font-size: 24px;
+    margin-right: 150px;
+    margin-bottom: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+}
+
+.name a::before{
+    content: '';
+    height: 15px;
+    width: 15px;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 50px;
+}
+
+.name .active {
+    color:grey;
+    transition: color 0.5s;
+}

@@ -1,0 +1,10 @@
+.status__span {
+    margin: 20px;
+    font-size: 20px;
+}
+
+.status__input input {
+    font-size: 20px;
+    margin-bottom: 20px;
+
+}

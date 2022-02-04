@@ -1,0 +1,33 @@
+.avatar{
+    width: 140px;
+}
+.content__text{
+    display: flex;
+    margin: 5px;
+}
+
+.content__about{
+    position: relative;
+    font-size: 18px;
+}
+
+.content__text .name{
+    font-size: 36px;
+}
+
+.content{
+    grid-area: c;
+    background-color: bisque;
+    margin: 15px;
+    padding: 15px;
+}
+
+.font-image{
+    position: relative;
+    height: 400px;
+    width: 1700px;
+}
+.header{
+    grid-area: h;
+    background-color: aqua;
+}
