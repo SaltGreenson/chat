@@ -1,4 +1,4 @@
-import {BrowserRouter, HashRouter, Link, Redirect, Route, Switch, withRouter} from "react-router-dom";
+import {HashRouter, Link, Redirect, Route, Switch, withRouter} from "react-router-dom";
 import React, {Component} from "react";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
@@ -7,15 +7,13 @@ import Preloader from "./components/common/Preloader/Preloader";
 import store, {AppStateType} from "./redux/redux-store";
 import 'antd/dist/antd.css';
 import {Breadcrumb, Layout, Menu} from 'antd';
-import {LaptopOutlined, NotificationOutlined, UserOutlined} from '@ant-design/icons';
+import {LaptopOutlined, UserOutlined} from '@ant-design/icons';
 import {withSuspense} from "./components/hoc/withSuspense";
 import Settings from "./components/Settings/Settings";
 import {UsersPage} from "./components/Users/UsersPage";
 import {Login} from "./components/Login/Login";
 import {Header} from "./components/Header/Header";
 
-// import ProfileContainer from "./components/Profile/ProfileContainer";
-// import DialogsContainer from "./components/Dialogs/DialogsContainer"
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'))
 const ChatPageLazy = React.lazy(() => import('./pages/Chat/ChatPage'))
@@ -91,29 +89,6 @@ class App extends Component<MapPropsType & DispatchPropsType> {
                 </Content>
                 <Footer style={{textAlign: 'center'}}>Vlad Yuskovich 2021</Footer>
             </Layout>
-
-
-            // <div className={classes.appWrapper}>
-            //     <HeaderContainer/>
-            //     <Navbar/>
-            //     <div className={classes.content}>
-            //         <Switch>
-            //             <Route exact path='/' render={() => <Redirect to="/profile"/> }/>
-            //             <Route exact path='/chat-alfa' render={() => <Redirect to="/profile"/> }/>
-            //             <Route path='/dialogs' render={() => <SuspendedDialogs/>}/>
-            //             <Route path='/profile/:userid?' render={() => <SuspendedProfile/>}/>
-            //             <Route path='/news' render={() => <News/>}/>
-            //             <Route path='/music' render={() => <Music/>}/>
-            //             <Route path='/settings' render={() => <Settings/>}/>
-            //             <Route path='/users' render={() => <UsersPage pageTitle = {"Users"}/>}/>
-            //             <Route path='/login' render={() => <Login/>}/>
-            //             <Route path = '*' render = {() => (<div>
-            //                 404 NOT FOUND
-            //             </div>)}/>
-            //         </Switch>
-            //     </div>
-            // </div>
-
         );
     }
 }
