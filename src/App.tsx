@@ -1,4 +1,4 @@
-import {BrowserRouter, Link, Redirect, Route, Switch, withRouter} from "react-router-dom";
+import {BrowserRouter, HashRouter, Link, Redirect, Route, Switch, withRouter} from "react-router-dom";
 import React, {Component} from "react";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
@@ -128,11 +128,11 @@ const AppContainer = compose<React.ComponentType>(
 
 const MainApp: React.FC = () => {
     return <React.StrictMode>
-        <BrowserRouter>
+        <HashRouter>
             <Provider store={store}>
                 <AppContainer/>
             </Provider>
-        </BrowserRouter>
+        </HashRouter>
     </React.StrictMode>
 }
 
