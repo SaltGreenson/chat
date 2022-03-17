@@ -2,9 +2,12 @@ import React from "react";
 import classes from "./Users.module.css"
 import {NavLink} from "react-router-dom";
 import {UserType} from "../../types/types";
+import {getAlreadyCommunicatedUsers} from "../../selectors/dialog-selector";
+import {useSelector} from "react-redux";
 
 
 const User: React.FC<PropsType> = (props) => {
+    const alreadyCommunicatedUsers = useSelector(getAlreadyCommunicatedUsers)
     return (
         <div>
             <div key={props.user.id} className={classes.userInfo}>
@@ -14,6 +17,11 @@ const User: React.FC<PropsType> = (props) => {
                             <img
                                 src={props.user.photos.small != null ? props.user.photos.small : "https://i.ya-webdesign.com/images/male-head-silhouette-png-2.png"}
                                 alt="#" width="50px"/>
+                        </NavLink>
+                        <NavLink to={`/dialogs/${props.user.id}`}>
+                            <button disabled={alreadyCommunicatedUsers.some(id => id === props.user.id)} onClick={() => {
+                                props.startChatting(props.user.id)
+                            }}>START CHATTING</button>
                         </NavLink>
                     </div>
                     <div>
@@ -51,4 +59,5 @@ type PropsType = {
     followingInProgress: Array<number>
     unfollow: (userId: number) => void
     follow: (userId: number) => void
+    startChatting: (userId: number) => void
 }

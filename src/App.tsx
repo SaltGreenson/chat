@@ -14,15 +14,18 @@ import {UsersPage} from "./components/Users/UsersPage";
 import {Login} from "./components/Login/Login";
 import {Header} from "./components/Header/Header";
 
-const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
+const DialogLazy = React.lazy(() => import('./pages/Dialog/DialogsPage'))
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'))
 const ChatPageLazy = React.lazy(() => import('./pages/Chat/ChatPage'))
+const DialogUser = React.lazy(() => import('./pages/Dialog/DialogUser'))
 
 const {SubMenu} = Menu;
 const {Content, Footer, Sider} = Layout;
-const SuspendedDialogs = withSuspense(DialogsContainer)
+
+const SuspendedDialogPage = withSuspense(DialogLazy)
 const SuspendedProfile = withSuspense(ProfileContainer)
 const SuspendedChatPage = withSuspense(ChatPageLazy)
+const SuspendedDialogUser = withSuspense(DialogUser)
 
 class App extends Component<MapPropsType & DispatchPropsType> {
     handleAllUnhandledErrors = (e: PromiseRejectionEvent) => {
@@ -74,7 +77,8 @@ class App extends Component<MapPropsType & DispatchPropsType> {
                             <Switch>
                                 <Route exact path='/' render={() => <Redirect to="/profile"/>}/>
                                 <Route exact path='/chat-alfa' render={() => <Redirect to="/profile"/>}/>
-                                <Route path='/dialogs' render={() => <SuspendedDialogs/>}/>
+                                <Route exact path='/dialogs' render={() => <SuspendedDialogPage/>}/>
+                                <Route path='/dialogs/:userid?' render={() => <SuspendedDialogUser/>}/>
                                 <Route path='/profile/:userid?' render={() => <SuspendedProfile/>}/>
                                 <Route path='/users' render={() => <UsersPage pageTitle={"Users"}/>}/>
                                 <Route path='/login' render={() => <Login/>}/>
@@ -102,13 +106,11 @@ const AppContainer = compose<React.ComponentType>(
     connect(mapStateToProps, {initializeApp}))(App);
 
 const MainApp: React.FC = () => {
-    return <React.StrictMode>
-        <HashRouter>
+    return <HashRouter>
             <Provider store={store}>
                 <AppContainer/>
             </Provider>
         </HashRouter>
-    </React.StrictMode>
 }
 
 export default MainApp

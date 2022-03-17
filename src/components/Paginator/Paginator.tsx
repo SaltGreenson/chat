@@ -14,7 +14,6 @@ const Paginator: React.FC<PropsType> = ({totalItemsCount,
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
-
     const portionCount = Math.ceil(pagesCount / portionSize)
     const [portionNumber, setPortionNumber] = useState<number>(1)
     const leftPortionPageNumber = (portionNumber - 1) * portionSize + 1

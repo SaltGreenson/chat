@@ -143,7 +143,6 @@ export const saveProfile = (profile: ProfileType): GenericThunkType<ActionsTypes
 export const savePhoto = (file: File): GenericThunkType<ActionsTypes> =>
     async (dispatch) => {
     const response = await profileAPI.savePhoto(file)
-    debugger
     if (response.resultCode === 0) {
         dispatch(actions.savePhotoSuccess(response.data.photos))
     }

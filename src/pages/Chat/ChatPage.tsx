@@ -51,7 +51,6 @@ const Messages: React.FC = () => {
         } else {
             setIsAutoScroll(false)
         }
-        console.log(element.scrollHeight - element.scrollTop, element.clientHeight)
     }
     // фукнция для определения автоматической прокрутки сообщений
     useEffect(() => {

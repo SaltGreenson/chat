@@ -1,6 +1,5 @@
 import {Action, applyMiddleware, combineReducers, compose, createStore} from "redux";
 import profileReducer from "./profile-reducer";
-import dialogsReducer from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 import usersReducer from "./users-reducer";
 import authReducer from "./auth-reducer";
@@ -8,16 +7,17 @@ import thunkMiddleWare, {ThunkAction} from 'redux-thunk'
 import {reducer as formReducer} from 'redux-form'
 import appReducer from "./app-reducer";
 import {chatReducer} from "./chat-reducer";
+import {dialogReducer} from "./dialog-reducer";
 
 const rootReducer = combineReducers({
     profilePage: profileReducer,
-    dialogsPage: dialogsReducer,
     sidebar: sidebarReducer,
     usersPage: usersReducer,
     auth: authReducer,
     app: appReducer,
     form: formReducer,
-    chat: chatReducer
+    chat: chatReducer,
+    dialogPage: dialogReducer
 })
 
 //type PropertiesTypes<T> = T extends {[key: string]: infer U} ? U : never
